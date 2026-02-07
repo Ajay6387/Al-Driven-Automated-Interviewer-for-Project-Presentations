@@ -1,0 +1,575 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  color: #667eea;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Error Banner */
+.error-banner {
+  background: #f44336;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-banner button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Setup Stage */
+.setup-stage {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.setup-stage h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.setup-form {
+  margin: 2rem 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.instructions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.instructions h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.instructions ol {
+  margin-left: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Interview Stage */
+.interview-stage {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.interview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Screen Capture */
+.screen-capture {
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.screen-controls {
+  margin-bottom: 1rem;
+}
+
+.screen-preview {
+  margin-top: 1rem;
+}
+
+.screen-preview h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.status-text {
+  color: #4caf50;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Audio Recorder */
+.audio-recorder {
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: #f44336;
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
+  background: #f44336;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Interview Panel */
+.interview-panel {
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.question-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.question-card {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.question-context {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.question-type {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.answer-section {
+  margin-top: 1.5rem;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  margin: 1rem 0;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 0.5rem;
+}
+
+.waiting-message {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.interview-actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Evaluation Stage */
+.evaluation-stage {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.evaluation-report h2 {
+  color: #667eea;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.session-summary {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.summary-item .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.summary-item .value {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.overall-score {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.score-circle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  border: 8px solid;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+.score-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.score-grade {
+  font-size: 2rem;
+  color: #666;
+}
+
+.score-breakdown {
+  margin: 2rem 0;
+}
+
+.scores-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.score-bar {
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.score-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.weight {
+  color: #999;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.bar-container {
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 15px;
+}
+
+.score-value {
+  text-align: right;
+  font-weight: bold;
+  color: #333;
+}
+
+.feedback-section {
+  margin: 2rem 0;
+}
+
+.feedback-section h3 {
+  color: #667eea;
+  margin: 1.5rem 0 1rem;
+}
+
+.strengths-list,
+.improvements-list,
+.recommendations-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.strengths-list li,
+.improvements-list li,
+.recommendations-list li {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background: #f5f5f5;
+  border-radius: 6px;
+  border-left: 4px solid #667eea;
+}
+
+.specific-notes {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.note-item {
+  margin: 1rem 0;
+}
+
+.note-item h4 {
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.evaluation-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-danger,
+.btn-submit,
+.btn-finish {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+}
+
+.btn-danger {
+  background: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+.btn-submit {
+  background: #4caf50;
+  color: white;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  background: #45a049;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-finish {
+  background: #ff9800;
+  color: white;
+}
+
+.btn-finish:hover {
+  background: #f57c00;
+}
+
+/* Footer */
+.app-footer {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .interview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-bar {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .score-label {
+    grid-column: 1;
+  }
+
+  .bar-container {
+    grid-column: 1;
+  }
+
+  .score-value {
+    grid-column: 1;
+    text-align: left;
+  }
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  border-left: 4px solid #c62828;
+}
